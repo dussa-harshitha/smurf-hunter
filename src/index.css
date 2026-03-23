@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark cyber theme */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 95%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 185 70% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 30% 15%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 185 60% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 15%;
+    --ring: 185 70% 50%;
+
+    --radius: 0.5rem;
+
+    /* Suspicion level colors */
+    --suspicion-low: 142 70% 45%;
+    --suspicion-medium: 45 90% 50%;
+    --suspicion-high: 0 70% 55%;
+
+    /* Graph colors */
+    --graph-node-default: 185 70% 50%;
+    --graph-edge: 185 50% 40%;
+    --graph-glow: 185 100% 60%;
+
+    /* Accent gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(185 70% 50%), hsl(220 80% 60%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 70% 55%), hsl(30 80% 50%));
+    --gradient-safe: linear-gradient(135deg, hsl(142 70% 45%), hsl(170 60% 50%));
+    
+    /* Shadows and glows */
+    --glow-primary: 0 0 20px hsl(185 70% 50% / 0.4);
+    --glow-danger: 0 0 20px hsl(0 70% 55% / 0.4);
+    --glow-success: 0 0 20px hsl(142 70% 45% / 0.4);
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 185 70% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 185 70% 50%;
+  }
+
+  .dark {
+    /* Same as root since we're building a dark-first app */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-lg;
+  }
+
+  .cyber-glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  .danger-glow {
+    box-shadow: var(--glow-danger);
+  }
+
+  .success-glow {
+    box-shadow: var(--glow-success);
+  }
+
+  .suspicion-badge-low {
+    @apply bg-suspicion-low/20 text-suspicion-low border border-suspicion-low/30;
+  }
+
+  .suspicion-badge-medium {
+    @apply bg-suspicion-medium/20 text-suspicion-medium border border-suspicion-medium/30;
+  }
+
+  .suspicion-badge-high {
+    @apply bg-suspicion-high/20 text-suspicion-high border border-suspicion-high/30;
+  }
+
+  .address-text {
+    @apply font-mono text-sm tracking-tight;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .stat-label {
+    @apply text-xs uppercase tracking-wider text-muted-foreground;
+  }
+
+  .panel-header {
+    @apply text-lg font-semibold text-foreground border-b border-border pb-3 mb-4;
+  }
+
+  .neon-border {
+    @apply border border-primary/30;
+    box-shadow: inset 0 0 20px hsl(185 70% 50% / 0.05);
+  }
+}
+
+@layer utilities {
+  .text-gradient-cyber {
+    background: var(--gradient-cyber);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px hsl(185 70% 50% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 25px hsl(185 70% 50% / 0.6);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
