@@ -81,3 +81,4 @@ The Vite dev server proxies `/api/*` requests to the backend automatically.
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui, react-force-graph-2d
 - **Backend:** FastAPI, Python 3.11+, uvicorn
 - **Detection:** Custom graph algorithms, temporal analysis, BFS subgraph expansion
+![def1f9a8-effd-4e6d-b279-25434c126560](https://github.com/user-attachments/assets/520e4770-65c2-4239-bdf2-1292cb74ae87)
